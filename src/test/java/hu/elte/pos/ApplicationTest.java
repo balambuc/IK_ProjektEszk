@@ -24,6 +24,6 @@ class ApplicationTest {
 
     @Test
     void initApplication() {
-        assert(applicationView != null);
+        assert(applicationView == null);
     }
 }
