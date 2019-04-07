@@ -1,12 +1,12 @@
-package hu.elte.pos;
+package hu.elte.pos.view;
 
 import javax.swing.*;
 import java.awt.*;
 
-class AdminWaiterLogin extends JFrame {
-    AdminWaiterLogin(){
+class AdminWaiterLoginView extends JFrame {
+    AdminWaiterLoginView() {
 
-        JFrame frame = new JFrame("Login");
+        JFrame frame = new JFrame("LoginView");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JPanel mainPanel = new JPanel();

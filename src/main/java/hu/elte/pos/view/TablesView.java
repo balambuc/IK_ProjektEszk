@@ -1,13 +1,11 @@
-package hu.elte.pos;
+package hu.elte.pos.view;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-class Tables {
-    Tables() {
-        JFrame frame = new JFrame("Login");
+class TablesView {
+    TablesView() {
+        JFrame frame = new JFrame("LoginView");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JPanel mainPanel = new JPanel();
@@ -24,7 +22,7 @@ class Tables {
         secondPanel.setMaximumSize(new Dimension(200,200));
         secondPanel.setBackground(Color.BLACK);
 
-        JLabel hello = new JLabel("Tables:");
+        JLabel hello = new JLabel("TablesView:");
         hello.setForeground(Color.gray);
         hello.setFont(new Font("Verdana",Font.PLAIN,20));
         hello.setHorizontalAlignment(JLabel.CENTER);
@@ -38,11 +36,7 @@ class Tables {
             tables.setFont(new Font("Verdana",Font.PLAIN, 10));
             firstPanel.add(tables);
 
-            tables.addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent ev) {
-                    new Items();
-                }
-            });
+            tables.addActionListener(ev -> new ItemsView());
         }
 
         mainPanel.add(secondPanel);

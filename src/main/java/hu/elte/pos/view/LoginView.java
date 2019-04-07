@@ -1,13 +1,11 @@
-package hu.elte.pos;
+package hu.elte.pos.view;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
- class Login extends JFrame{
-     Login() {
-        JFrame frame = new JFrame("Login");
+public class LoginView extends JFrame {
+    public LoginView() {
+        JFrame frame = new JFrame("LoginView");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JPanel mainPanel = new JPanel();
@@ -31,11 +29,7 @@ import java.awt.event.ActionListener;
         admin.setFont(new Font("Verdana", Font.PLAIN, 20));
         firstPanel.add(admin);
 
-        admin.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent ev) {
-                new AdminWaiterLogin();
-            }
-        });
+        admin.addActionListener(ev -> new AdminWaiterLoginView());
 
         JLabel hello = new JLabel("Welcome!");
         hello.setForeground(Color.gray);
@@ -51,11 +45,7 @@ import java.awt.event.ActionListener;
             waiter.setFont(new Font("Verdana", Font.PLAIN, 20));
             firstPanel.add(waiter);
 
-            waiter.addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent ev) {
-                    new Tables();
-                }
-            });
+            waiter.addActionListener(ev -> new TablesView());
         }
 
         mainPanel.add(secondPanel);
