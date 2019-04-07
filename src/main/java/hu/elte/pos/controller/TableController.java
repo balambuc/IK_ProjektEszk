@@ -12,7 +12,7 @@ public class TableController {
 
 
     public void addTable(){
-        tables.add(new TableModel());
+        tables.add(new TableModel(tables.size()+1));
     }
 
     public void removeTable(int index){

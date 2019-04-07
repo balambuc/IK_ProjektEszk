@@ -4,15 +4,13 @@ import java.util.ArrayList;
 
 public class TableModel {
 
-    private ArrayList<ItemModel> itemList;
+    private ArrayList<ItemModel> itemList = new ArrayList<>();
     private int totalCostOfTable=0;
     private int tableNumber;
-    private static int numberOfTables=1;
     private WaiterModel waiter;
 
-    public TableModel(){
-        this.tableNumber= TableModel.numberOfTables;
-        TableModel.numberOfTables++;
+    public TableModel(int tableNumber){
+        this.tableNumber= tableNumber;
     }
 
     public ArrayList<ItemModel> getItems(){
@@ -44,6 +42,8 @@ public class TableModel {
     public void cleanTable(){
         itemList.clear();
         totalCostOfTable=0;
+        waiter = null;
+
     }
 
     public void setWaiter(WaiterModel waiter){
