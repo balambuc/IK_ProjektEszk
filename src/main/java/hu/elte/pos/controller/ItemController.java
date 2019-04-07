@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class ItemController {
 
-    private ArrayList<ItemModel> items;
+    private ArrayList<ItemModel> items = new ArrayList<>();
 
     public ItemController(){}
 
