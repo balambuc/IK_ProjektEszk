@@ -1,17 +1,27 @@
 package hu.elte.pos.model;
 
 import java.util.ArrayList;
-import hu.elte.pos.model.ItemModel;
 
 public class TableModel {
 
     private ArrayList<ItemModel> itemList;
+    private int totalCostOfTable=0;
+    private int tableNumber;
+    private static int numberOfTables=1;
+    private WaiterModel waiter;
 
-    public TableModel(){}
+    public TableModel(){
+        this.tableNumber= TableModel.numberOfTables;
+        TableModel.numberOfTables++;
+    }
 
+    public ArrayList<ItemModel> getItems(){
+        return this.itemList;
+    }
 
     public void addItem(ItemModel item){
         itemList.add(item);
+        totalCostOfTable += item.getCost();
     }
 
     public ItemModel getItem(int index){
@@ -19,15 +29,28 @@ public class TableModel {
     }
 
     public void removeItem(int index){
+        totalCostOfTable -= itemList.get(index).getCost();
         itemList.remove(index);
-
     }
 
-    public int getCostOfItems(){
-        int total = 0;
-        for(int i = 0; i<itemList.size(); i++){
-            total += itemList.get(i).getCost();
-        }
-        return total;
+    public int getTotalCostOfTable(){
+        return totalCostOfTable;
+    }
+
+    public int getTableNumber(){
+        return this.tableNumber;
+    }
+
+    public void cleanTable(){
+        itemList.clear();
+        totalCostOfTable=0;
+    }
+
+    public void setWaiter(WaiterModel waiter){
+        this.waiter = waiter;
+    }
+
+    public WaiterModel getWaiter(){
+        return this.waiter;
     }
 }
