@@ -22,4 +22,8 @@ public class WaiterController {
         waiterList.remove(index);
     }
 
+    public int getNumberOfWaiters(){
+        return waiterList.size();
+    }
+
 }

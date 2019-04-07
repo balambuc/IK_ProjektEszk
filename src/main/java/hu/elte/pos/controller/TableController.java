@@ -27,5 +27,9 @@ public class TableController {
         return tables.get(index);
     }
 
+    public int getNumberOfTables(){
+        return tables.size();
+    }
+
 
 }

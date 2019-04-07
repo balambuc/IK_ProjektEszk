@@ -25,5 +25,8 @@ public class ItemController {
         return items.get(index);
     }
 
+    public int getNumberOfItems(){
+        return items.size();
+    }
 
 }
