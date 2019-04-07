@@ -28,7 +28,7 @@ import java.awt.event.ActionListener;
         admin.setPreferredSize(new Dimension(50, 100));
         //admin.setBackground(Color.cyan);
         admin.setBounds(50,100,95,30);
-        admin.setFont(new Font("Verdana", 1, 20));
+        admin.setFont(new Font("Verdana", Font.PLAIN, 20));
         firstPanel.add(admin);
 
         admin.addActionListener(new ActionListener() {
@@ -39,7 +39,7 @@ import java.awt.event.ActionListener;
 
         JLabel hello = new JLabel("Welcome!");
         hello.setForeground(Color.gray);
-        hello.setFont(new Font("Verdana",1,30));
+        hello.setFont(new Font("Verdana", Font.PLAIN, 20));
         hello.setHorizontalAlignment(JLabel.CENTER);
         secondPanel.add(hello);
 
@@ -48,12 +48,12 @@ import java.awt.event.ActionListener;
             waiter = new JButton("Waiter " + i);
             waiter.setPreferredSize(new Dimension(50, 100));
             //waiter.setBackground(Color.ORANGE);
-            waiter.setFont(new Font("Verdana", 1, 20));
+            waiter.setFont(new Font("Verdana", Font.PLAIN, 20));
             firstPanel.add(waiter);
 
             waiter.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent ev) {
-                    new AdminWaiterLogin();
+                    new Tables();
                 }
             });
         }

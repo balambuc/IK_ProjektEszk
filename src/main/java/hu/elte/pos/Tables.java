@@ -40,7 +40,7 @@ class Tables {
 
             tables.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent ev) {
-                    new AdminWaiterLogin();
+                    new Items();
                 }
             });
         }
