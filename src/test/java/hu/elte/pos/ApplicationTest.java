@@ -43,6 +43,8 @@ class ApplicationTest {
         tc.addTable();
         tc.addTable();
         assertTrue(tc.getTable(1).getTableNumber() == 2);
+        tc.removeTable(0);
+        assertTrue(tc.getNumberOfTables()==1);
     }
 
     @Test
@@ -51,11 +53,11 @@ class ApplicationTest {
         wc.addWaiter(19, "csabi", "4567asd");
 
         assertTrue(wc.getWaiter(1).getName()== "csabi");
+        assertTrue(wc.getNumberOfWaiters()==2);
     }
 
     @Test
     void testItems(){
-        ic = new ItemController();
         ic.addItem(1000, "palacsinta");
         ic.addItem(300, "kóla");
         ic.addItem(3000, "bélszín");
@@ -67,6 +69,35 @@ class ApplicationTest {
         }
 
         assertTrue(vanepalacsinta);
+        assertTrue(ic.getNumberOfItems()==3);
+    }
+
+    @Test
+    void tableAndPricesTest(){
+        ic.addItem(1000, "palacsinta");
+        ic.addItem(300, "kóla");
+        ic.addItem(3000, "bélszín");
+        tc.addTable();
+        tc.addTable();
+        tc.getTable(0).addItem(ic.getItem(0));
+        tc.getTable(0).addItem(ic.getItem(2));
+        assertTrue(tc.getTable(0).getTotalCostOfTable()==4000);
+        tc.getTable(0).removeItem(0);
+        assertTrue(tc.getTable(0).getTotalCostOfTable()==3000);
+        tc.getTable(0).addItem(ic.getItem(1));
+        assertTrue(tc.getTable(0).getTotalCostOfTable()==3300);
+        tc.getTable(0).cleanTable();
+        assertTrue(tc.getTable(0).getItems().size()==0 && tc.getTable(0).getTotalCostOfTable() == 0);
+    }
+
+    @Test
+    void tableAndWaiterTest(){
+        tc.addTable();
+        wc.addWaiter(20,"Laci", "1234asd");
+        tc.getTable(0).setWaiter(wc.getWaiter(0));
+        assertTrue(tc.getTable(0).getWaiter().getName().equals("Laci"));
+        tc.getTable(0).cleanTable();
+        assertTrue(tc.getTable(0).getWaiter()== null);
     }
 
 
