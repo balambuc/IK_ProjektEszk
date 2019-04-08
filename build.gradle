@@ -19,7 +19,6 @@ jacoco {
 jacocoTestReport {
     reports {
         xml.enabled true
-        xml.destination "${buildDir}/jacoco/report.xml"
     }
 }
 
