@@ -22,7 +22,7 @@ jacocoTestReport {
     }
     afterEvaluate {
         classDirectories = files(classDirectories.files.collect {
-            fileTree(dir: it, exclude: '**/view/**')
+            fileTree(dir: it, exclude: ['**/view/**', '**/Application**'])
         })
     }
 }
