@@ -3,6 +3,10 @@
 # Check https://circleci.com/docs/2.0/language-java/ for more details
 #
 version: 2
+
+orbs:
+  codecov: codecov/codecov@1.0.2
+
 jobs:
   build:
     docker:
@@ -52,3 +56,25 @@ jobs:
           path: ~/test-results
       - store_artifacts:
           path: ~/test-results/junit
+
+      #upload code coverage data
+      - run:
+          - comand: |
+              mkdir -p ~/coverage-results/
+              find . -type f -regex ".*/build/jacoco/test.exec" -exec cp {} ~/coverage-results/ \;
+      - store_artifacts:
+          - path: ~/coverage-results/
+      - codecov/upload:
+          file: ~/coverage-results/test.exec
+
+      #save jar build artifact:
+      - run: gradle jar
+      - run:
+          name: Save JAR file
+          comand: |
+            mkdir -p ~/jar-file/
+            find . -type f -regex ".*/build/libs/.*jar" -exec cp {} ~/jar-file/ \;
+          when: always
+      - store_artifatcts:
+          path: ~/jar-file/
+

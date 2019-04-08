@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'jacoco'
 }
 
 group 'hu.elte'
@@ -11,6 +12,10 @@ repositories {
     mavenCentral()
 }
 
+jacoco {
+    toolVersion = "0.8.2"
+}
+
 test {
     useJUnitPlatform()
 }
@@ -20,4 +25,14 @@ dependencies {
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.3.1'
     testCompile group: 'junit', name: 'junit', version: '4.12'
     testCompile group: 'org.easytesting', name: 'fest-swing', version: '1.2.1'
+}
+
+jar {
+    manifest {
+        attributes "Main-Class": "hu.elte.pos.Application"
+    }
+
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
 }
