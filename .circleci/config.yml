@@ -59,11 +59,12 @@ jobs:
 
       #upload code coverage data
       - run:
-          - comand: |
+          name: Save coverage results
+          comand: |
               mkdir -p ~/coverage-results/
               find . -type f -regex ".*/build/jacoco/test.exec" -exec cp {} ~/coverage-results/ \;
       - store_artifacts:
-          - path: ~/coverage-results/
+          path: ~/coverage-results/
       - codecov/upload:
           file: ~/coverage-results/test.exec
 
