@@ -60,7 +60,7 @@ jobs:
       #upload code coverage data
       - run:
           name: Save coverage results
-          comand: |
+          command: |
               mkdir -p ~/coverage-results/
               find . -type f -regex ".*/build/jacoco/test.exec" -exec cp {} ~/coverage-results/ \;
       - store_artifacts:
@@ -72,7 +72,7 @@ jobs:
       - run: gradle jar
       - run:
           name: Save JAR file
-          comand: |
+          command: |
             mkdir -p ~/jar-file/
             find . -type f -regex ".*/build/libs/.*jar" -exec cp {} ~/jar-file/ \;
           when: always
