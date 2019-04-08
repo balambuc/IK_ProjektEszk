@@ -76,6 +76,6 @@ jobs:
             mkdir -p ~/jar-file/
             find . -type f -regex ".*/build/libs/.*jar" -exec cp {} ~/jar-file/ \;
           when: always
-      - store_artifatcts:
+      - store_artifacts:
           path: ~/jar-file/
 
