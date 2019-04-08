@@ -62,7 +62,7 @@ jobs:
       - run:
           name: Save coverage results
           command: |
-              mkdir -p ~/coverage-results/
+            mkdir -p ~/coverage-results/
             find . -type f -regex ".*/build/jacoco/jacocoTestReport.xml" -exec cp {} ~/coverage-results/ \;
       - store_artifacts:
           path: ~/coverage-results/
