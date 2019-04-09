@@ -42,8 +42,12 @@ jobs:
             - ~/.gradle
           key: v1-dependencies-{{ checksum "build.gradle" }}
 
-      # run tests!
-      - run: gradle test
+      # Run checks!
+      - run: gradle check
+
+      # Save linter output
+      - store_artifacts:
+          path: ~/build/reports/checkstyle
 
       # save test results:
       - run:
@@ -64,6 +68,7 @@ jobs:
           command: |
             mkdir -p ~/coverage-results/
             find . -type f -regex ".*/jacocoTestReport.xml" -exec cp {} ~/coverage-results/ \;
+          when: always
       - store_artifacts:
           path: ~/coverage-results/
       - codecov/upload:
@@ -76,7 +81,5 @@ jobs:
           command: |
             mkdir -p ~/jar-file/
             find . -type f -regex ".*/build/libs/.*jar" -exec cp {} ~/jar-file/ \;
-          when: always
       - store_artifacts:
           path: ~/jar-file/
-
