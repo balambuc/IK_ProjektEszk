@@ -3,25 +3,19 @@ package hu.elte.pos;
 import hu.elte.pos.controller.ItemController;
 import hu.elte.pos.controller.TableController;
 import hu.elte.pos.controller.WaiterController;
-import hu.elte.pos.view.ApplicationView;
-
 import org.fest.swing.fixture.FrameFixture;
 import org.junit.After;
-import org.junit.Before;
-//import org.junit.Test;
-import static org.junit.Assert.*;
-
-import org.junit.Rule;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.*;
 
+import static org.junit.Assert.*;
 
 
 class ApplicationTest {
 
-    TableController tc;
-    WaiterController wc;
-    ItemController ic;
+    private TableController tc;
+    private WaiterController wc;
+    private ItemController ic;
 
     private FrameFixture applicationView;
 
@@ -39,41 +33,41 @@ class ApplicationTest {
 
 
     @Test
-    void testTables(){
+    void testTables() {
         tc.addTable();
         tc.addTable();
-        assertTrue(tc.getTable(1).getTableNumber() == 2);
+        assertEquals(2, tc.getTable(1).getTableNumber());
         tc.removeTable(0);
-        assertTrue(tc.getNumberOfTables()==1);
+        assertEquals(1, tc.getNumberOfTables());
     }
 
     @Test
-    void testWaiters(){
+    void testWaiters() {
         wc.addWaiter(26, "liza", "1234asd");
         wc.addWaiter(19, "csabi", "4567asd");
 
-        assertTrue(wc.getWaiter(1).getName()== "csabi");
-        assertTrue(wc.getNumberOfWaiters()==2);
+        assertSame("csabi", wc.getWaiter(1).getName());
+        assertEquals(2, wc.getNumberOfWaiters());
     }
 
     @Test
-    void testItems(){
+    void testItems() {
         ic.addItem(1000, "palacsinta");
         ic.addItem(300, "kóla");
         ic.addItem(3000, "bélszín");
-        boolean vanepalacsinta= false;
-        for(int i = 0; i<ic.getNumberOfItems(); i++){
-            if(ic.getItem(i).getName().equals("palacsinta")){
+        boolean vanepalacsinta = false;
+        for (int i = 0; i < ic.getNumberOfItems(); i++) {
+            if (ic.getItem(i).getName().equals("palacsinta")) {
                 vanepalacsinta = true;
             }
         }
 
         assertTrue(vanepalacsinta);
-        assertTrue(ic.getNumberOfItems()==3);
+        assertEquals(3, ic.getNumberOfItems());
     }
 
     @Test
-    void tableAndPricesTest(){
+    void tableAndPricesTest() {
         ic.addItem(1000, "palacsinta");
         ic.addItem(300, "kóla");
         ic.addItem(3000, "bélszín");
@@ -81,29 +75,24 @@ class ApplicationTest {
         tc.addTable();
         tc.getTable(0).addItem(ic.getItem(0));
         tc.getTable(0).addItem(ic.getItem(2));
-        assertTrue(tc.getTable(0).getTotalCostOfTable()==4000);
+        assertEquals(4000, tc.getTable(0).getTotalCostOfTable());
         tc.getTable(0).removeItem(0);
-        assertTrue(tc.getTable(0).getTotalCostOfTable()==3000);
+        assertEquals(3000, tc.getTable(0).getTotalCostOfTable());
         tc.getTable(0).addItem(ic.getItem(1));
-        assertTrue(tc.getTable(0).getTotalCostOfTable()==3300);
+        assertEquals(3300, tc.getTable(0).getTotalCostOfTable());
         tc.getTable(0).cleanTable();
-        assertTrue(tc.getTable(0).getItems().size()==0 && tc.getTable(0).getTotalCostOfTable() == 0);
+        assertTrue(tc.getTable(0).getItems().size() == 0 && tc.getTable(0).getTotalCostOfTable() == 0);
     }
 
     @Test
-    void tableAndWaiterTest(){
+    void tableAndWaiterTest() {
         tc.addTable();
-        wc.addWaiter(20,"Laci", "1234asd");
+        wc.addWaiter(20, "Laci", "1234asd");
         tc.getTable(0).setWaiter(wc.getWaiter(0));
-        assertTrue(tc.getTable(0).getWaiter().getName().equals("Laci"));
+        assertEquals("Laci", tc.getTable(0).getWaiter().getName());
         tc.getTable(0).cleanTable();
-        assertTrue(tc.getTable(0).getWaiter()== null);
+        assertNull(tc.getTable(0).getWaiter());
     }
-
-
-
-
-
 
 
 }
