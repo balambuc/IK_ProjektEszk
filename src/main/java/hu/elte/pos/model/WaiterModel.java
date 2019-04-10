@@ -26,7 +26,7 @@ public class WaiterModel {
 
     @Override
     public String toString() {
-        return "Name:" + name + ", age:" + age + ", id:" + id;
+        return "Name: " + name + ", age: " + age + ", id: " + id;
     }
 
     @Override

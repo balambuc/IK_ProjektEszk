@@ -1,8 +1,10 @@
 package hu.elte.pos;
 
+import hu.elte.pos.controller.DatabaseController;
 import hu.elte.pos.controller.ItemController;
 import hu.elte.pos.controller.TableController;
 import hu.elte.pos.controller.WaiterController;
+import hu.elte.pos.model.WaiterModel;
 import org.fest.swing.fixture.FrameFixture;
 import org.junit.After;
 import org.junit.jupiter.api.BeforeEach;
@@ -64,6 +66,9 @@ class ApplicationTest {
 
         assertTrue(vanepalacsinta);
         assertEquals(3, ic.getNumberOfItems());
+
+        ic.removeItem(2);
+        assertEquals(2, ic.getNumberOfItems());
     }
 
     @Test
@@ -95,5 +100,26 @@ class ApplicationTest {
         assertNull(tc.getTable(0).getWaiter());
     }
 
+    @Test
+    void databaseControllerTest() {
+        DatabaseController dc = new DatabaseController();
+        assertEquals(42, dc.answer);
+    }
 
+    @Test
+    void waiterTest() {
+        String name = "Isti";
+        int age = 45;
+        String id = "#007";
+        WaiterModel waiter = new WaiterModel(name, age, id);
+
+        assertEquals(age, waiter.getAge());
+        assertEquals(id, waiter.getId());
+        assertEquals(name, waiter.getName());
+        assertEquals("Name: Isti, age: 45, id: #007", waiter.toString());
+
+        WaiterModel waiter2 = new WaiterModel(name, age, id);
+
+        assertEquals(waiter, waiter2);
+    }
 }
