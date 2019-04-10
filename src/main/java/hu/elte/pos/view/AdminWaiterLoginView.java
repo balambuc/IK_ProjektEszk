@@ -19,7 +19,7 @@ class AdminWaiterLoginView extends JFrame {
         loginPanel.setBackground(Color.BLACK);
 
         JLabel loginLabel = new JLabel("LOGIN");
-        loginLabel.setFont(new Font("Verdana",Font.PLAIN, 15));
+        loginLabel.setFont(new Font("Verdana", Font.PLAIN, 15));
         loginLabel.setForeground(Color.white);
         loginLabel.setHorizontalAlignment(JLabel.CENTER);
 
@@ -43,8 +43,8 @@ class AdminWaiterLoginView extends JFrame {
 
         frame.setContentPane(mainPanel);
 
-        frame.setSize(350,250);
-        frame.setMinimumSize(new Dimension(250,200));
+        frame.setSize(350, 250);
+        frame.setMinimumSize(new Dimension(250, 200));
         frame.setVisible(true);
     }
 }

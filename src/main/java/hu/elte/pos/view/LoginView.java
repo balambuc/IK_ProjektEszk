@@ -18,14 +18,13 @@ public class LoginView extends JFrame {
         firstPanel.setBackground(Color.BLACK);
 
         JPanel secondPanel = new JPanel();
-        secondPanel.setLayout(new GridLayout(1,1));
-        secondPanel.setMaximumSize(new Dimension(200,200));
+        secondPanel.setLayout(new GridLayout(1, 1));
+        secondPanel.setMaximumSize(new Dimension(200, 200));
         secondPanel.setBackground(Color.BLACK);
 
         JButton admin = new JButton("ADMIN");
         admin.setPreferredSize(new Dimension(50, 100));
-        //admin.setBackground(Color.cyan);
-        admin.setBounds(50,100,95,30);
+        admin.setBounds(50, 100, 95, 30);
         admin.setFont(new Font("Verdana", Font.PLAIN, 20));
         firstPanel.add(admin);
 
@@ -38,10 +37,9 @@ public class LoginView extends JFrame {
         secondPanel.add(hello);
 
         JButton waiter;
-        for (int i=1; i<3; i++) {
+        for (int i = 1; i < 3; i++) {
             waiter = new JButton("Waiter " + i);
             waiter.setPreferredSize(new Dimension(50, 100));
-            //waiter.setBackground(Color.ORANGE);
             waiter.setFont(new Font("Verdana", Font.PLAIN, 20));
             firstPanel.add(waiter);
 
@@ -53,9 +51,8 @@ public class LoginView extends JFrame {
 
         frame.setContentPane(mainPanel);
 
-        frame.setSize(520,600);
-        frame.setMinimumSize(new Dimension(520,600));
+        frame.setSize(520, 600);
+        frame.setMinimumSize(new Dimension(520, 600));
         frame.setVisible(true);
     }
-
 }

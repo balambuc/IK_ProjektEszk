@@ -16,12 +16,12 @@ class ItemsView extends JFrame {
         titlePanel.setBackground(Color.BLACK);
         JLabel tileLabel = new JLabel("Table");
         titlePanel.add(tileLabel);
-        
+
         mainPanel.add(titlePanel);
 
         JPanel secondPanel = new JPanel();
         secondPanel.setBackground(Color.BLACK);
-        
+
         JPanel listPanel = new JPanel();
         listPanel.setBackground(Color.BLACK);
         String[] list = {"cghjk", "tftzu", "kjhgfg", "lkjhgfd", "jhgfg"};
@@ -52,8 +52,8 @@ class ItemsView extends JFrame {
         mainPanel.add(buttonsPanel);
 
         frame.setContentPane(mainPanel);
-        frame.setSize(520,600);
-        frame.setMinimumSize(new Dimension(520,600));
+        frame.setSize(520, 600);
+        frame.setMinimumSize(new Dimension(520, 600));
         frame.setVisible(true);
     }
 }
