@@ -3,3 +3,5 @@
 [![codecov](https://codecov.io/gh/balambuc/IK_ProjektEszk/branch/master/graph/badge.svg)](https://codecov.io/gh/balambuc/IK_ProjektEszk)
 
 A cím mindent elárul :)
+
+Letölthető JAR file hamarosan.
