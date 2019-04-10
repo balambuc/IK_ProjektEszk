@@ -81,7 +81,8 @@ class ApplicationTest {
         tc.getTable(0).addItem(ic.getItem(1));
         assertEquals(3300, tc.getTable(0).getTotalCostOfTable());
         tc.getTable(0).cleanTable();
-        assertTrue(tc.getTable(0).getItems().size() == 0 && tc.getTable(0).getTotalCostOfTable() == 0);
+        assertTrue(tc.getTable(0).getItems().size() == 0
+                && tc.getTable(0).getTotalCostOfTable() == 0);
     }
 
     @Test

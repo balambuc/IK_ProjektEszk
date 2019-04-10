@@ -1,14 +1,7 @@
 package hu.elte.pos.view;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.GridLayout;
-import java.awt.TextField;
-import javax.swing.BoxLayout;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javax.swing.*;
+import java.awt.*;
 
 class AdminWaiterLoginView extends JFrame {
     AdminWaiterLoginView() {

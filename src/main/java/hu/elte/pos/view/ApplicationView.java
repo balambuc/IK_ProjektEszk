@@ -1,7 +1,7 @@
 package hu.elte.pos.view;
 
-import java.awt.Dimension;
-import javax.swing.JFrame;
+import javax.swing.*;
+import java.awt.*;
 
 public class ApplicationView extends JFrame {
 

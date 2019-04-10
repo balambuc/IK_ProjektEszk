@@ -1,13 +1,7 @@
 package hu.elte.pos.view;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JList;
-import javax.swing.JPanel;
+import javax.swing.*;
+import java.awt.*;
 
 class ItemsView extends JFrame {
     ItemsView() {
