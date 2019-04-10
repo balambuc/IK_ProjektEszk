@@ -47,7 +47,7 @@ jobs:
 
       # Save linter output
       - store_artifacts:
-          path: ~/build/reports/checkstyle
+          path: ~/repo/build/reports/checkstyle
 
       # save test results:
       - run:
@@ -61,7 +61,7 @@ jobs:
       - store_artifacts:
           path: ~/test-results/junit
 
-      #upload code coverage data
+      # Upload code coverage data
       - run: gradle jacocoTestReport
       - run:
           name: Save coverage results
@@ -74,7 +74,7 @@ jobs:
       - codecov/upload:
           file: ~/coverage-results/jacocoTestReport.xml
 
-      #save jar build artifact:
+      # Save jar build artifact:
       - run: gradle jar
       - run:
           name: Save JAR file

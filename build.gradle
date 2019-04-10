@@ -53,6 +53,7 @@ jacocoTestCoverageVerification {
     }
 }
 
+check.dependsOn jacocoTestReport
 check.dependsOn jacocoTestCoverageVerification
 
 test {
