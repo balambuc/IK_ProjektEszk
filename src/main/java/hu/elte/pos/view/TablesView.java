@@ -1,7 +1,14 @@
 package hu.elte.pos.view;
 
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.GridLayout;
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 class TablesView {
     TablesView() {
@@ -32,7 +39,6 @@ class TablesView {
         for (int i = 1; i < 10; i++) {
             tables = new JButton("T " + i);
             tables.setPreferredSize(new Dimension(50, 100));
-            //waiter.setBackground(Color.ORANGE);
             tables.setFont(new Font("Verdana", Font.PLAIN, 10));
             firstPanel.add(tables);
 
