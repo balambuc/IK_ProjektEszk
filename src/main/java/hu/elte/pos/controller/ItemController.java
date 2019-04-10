@@ -30,5 +30,4 @@ public class ItemController {
     public int getNumberOfItems() {
         return items.size();
     }
-
 }

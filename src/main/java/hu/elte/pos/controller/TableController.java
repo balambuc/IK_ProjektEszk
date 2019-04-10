@@ -31,5 +31,4 @@ public class TableController {
     public int getNumberOfTables() {
         return tables.size();
     }
-
 }
