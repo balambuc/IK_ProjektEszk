@@ -5,7 +5,7 @@ plugins {
 }
 
 group 'hu.elte'
-version '1.0-SNAPSHOT'
+version '0.0.1'
 
 sourceCompatibility = 1.8
 
@@ -74,4 +74,5 @@ jar {
     from {
         configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
     }
+    archiveName = 'pos.jar'
 }
