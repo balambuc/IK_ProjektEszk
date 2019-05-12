@@ -182,5 +182,4 @@ jobs:
           name: "Publish Release on GitHub"
           command: |
             VERSION=$(find ~/repo/build/libs/ -name '*.jar' | cut -d  '-' -f 2)
-            ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1}
-            -delete ${VERSION} ~/repo/build/libs/
+            ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} ${VERSION} ~/repo/build/libs/
