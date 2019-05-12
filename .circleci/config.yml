@@ -169,18 +169,18 @@ jobs:
           paths:
             - jar-file/
 
-    build_jar:
-      docker:
-        - image: cibuilds/github:0.12
+  release_to_github:
+    docker:
+      - image: cibuilds/github:0.12
 
-      working_directory: ~/repo
+    working_directory: ~/repo
 
-      steps:
-        - attach_workspace:
-            at: ~
-        - run:
-            name: "Publish Release on GitHub"
-            command: |
-              VERSION=$(gradle properties -q | grep "version:" | awk '{print $2}' | tr -d '[:space:]')
-              ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1}
-              -delete ${VERSION} ~/jar-file/
+    steps:
+      - attach_workspace:
+          at: ~
+      - run:
+          name: "Publish Release on GitHub"
+          command: |
+            VERSION=$(gradle properties -q | grep "version:" | awk '{print $2}' | tr -d '[:space:]')
+            ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1}
+            -delete ${VERSION} ~/jar-file/
