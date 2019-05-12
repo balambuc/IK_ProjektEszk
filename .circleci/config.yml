@@ -19,6 +19,7 @@ workflows:
             - bundle_dependencies
       - analyze_coverage:
           requires:
+            - run_tests
             - bundle_dependencies
       - deploy:
           requires:
@@ -81,6 +82,9 @@ jobs:
           command: |
             mkdir -p ~/test-results/junit/
             find . -type f -regex ".*/build/test-results/.*xml" -exec cp {} ~/test-results/junit/ \;
+      - save_cache:
+          key: v1-jacoco-{{ checksum "build.gradle" }}
+          path: ~/repo/build/jacoco/
       - store_test_results:
           path: ~/test-results
       - store_artifacts:
@@ -117,8 +121,11 @@ jobs:
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "build.gradle" }}
-      - run: gradle jacocoTestCoverageVerification
+      - restore_cache:
+          keys:
+            - v1-jacoco-{{ checksum "build.gradle" }}
       - run: gradle jacocoTestReport
+      - run: gradle jacocoTestCoverageVerification
       - run:
           name: Save coverage results
           command: |
@@ -136,6 +143,12 @@ jobs:
     working_directory: ~/repo
 
     steps:
+      - restore_cache:
+          keys:
+            - v1-repo-{{ .Environment.CIRCLE_SHA1 }}
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "build.gradle" }}
       - run: gradle jar
       - run:
           name: Save JAR file
