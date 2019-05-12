@@ -103,7 +103,7 @@ class ApplicationTest {
     @Test
     void databaseControllerTest() {
         DatabaseController dc = new DatabaseController();
-        assertEquals(42, dc.answer);
+        assertEquals(99, dc.answer);
     }
 
     @Test
