@@ -27,10 +27,11 @@ workflows:
             - analyze_coverage
             #only on v....
 
-
-
 jobs:
   checkout_code:
+    docker:
+      - image: circleci/openjdk:11-jdk
+
     working_directory: ~/repo
 
     steps:
