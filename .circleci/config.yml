@@ -117,7 +117,7 @@ jobs:
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "build.gradle" }}
-      - run: gradle jacocoTestCovergaeVerification
+      - run: gradle jacocoTestCoverageVerification
       - run: gradle jacocoTestReport
       - run:
           name: Save coverage results
