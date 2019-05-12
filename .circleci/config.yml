@@ -84,7 +84,8 @@ jobs:
             find . -type f -regex ".*/build/test-results/.*xml" -exec cp {} ~/test-results/junit/ \;
       - save_cache:
           key: v1-jacoco-{{ checksum "build.gradle" }}
-          path: ~/repo/build/jacoco/
+          paths:
+            - ~/repo/build/jacoco/
       - store_test_results:
           path: ~/test-results
       - store_artifacts:
