@@ -86,6 +86,7 @@ jobs:
           key: v1-jacoco-{{ checksum "build.gradle" }}
           paths:
             - ~/repo/build/jacoco/
+            - ~/repo/build/classes/
       - store_test_results:
           path: ~/test-results
       - store_artifacts:
