@@ -28,7 +28,7 @@ workflows:
             - analyze_coverage
       - release_to_github:
           requires:
-            -create_jar
+            - build_jar
           filters:
             branches:
               only: master
