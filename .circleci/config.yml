@@ -125,7 +125,7 @@ jobs:
             - v1-dependencies-{{ checksum "build.gradle" }}
       - restore_cache:
           keys:
-            - v1-jacoco-{{ checksum "build/jacoco/test.exec" }}
+            - v1-jacoco-
       - run: gradle jacocoTestReport
       - run: gradle jacocoTestCoverageVerification
       - run:
