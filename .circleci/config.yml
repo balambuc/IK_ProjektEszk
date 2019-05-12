@@ -165,9 +165,9 @@ jobs:
       - store_artifacts:
           path: ~/jar-file/
       - persist_to_workspace:
-          root: ~
+          root: build
           paths:
-            - jar-file/
+            - libs
 
   release_to_github:
     docker:
@@ -177,10 +177,10 @@ jobs:
 
     steps:
       - attach_workspace:
-          at: ~
+          at: ~/repo/build
       - run:
           name: "Publish Release on GitHub"
           command: |
             VERSION=$(gradle properties -q | grep "version:" | awk '{print $2}' | tr -d '[:space:]')
             ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1}
-            -delete ${VERSION} ~/jar-file/
+            -delete ${VERSION} ~/repo/build/libs/pos.jar
