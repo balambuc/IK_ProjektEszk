@@ -181,6 +181,6 @@ jobs:
       - run:
           name: "Publish Release on GitHub"
           command: |
-            VERSION=$(gradle properties -q | grep "version:" | awk '{print $2}' | tr -d '[:space:]')
+            VERSION=$(find ~/repo/build/libs/ -name '*.jar' | cut -d  '-' -f 2)
             ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1}
-            -delete ${VERSION} ~/repo/build/libs/pos.jar
+            -delete ${VERSION} ~/repo/build/libs/
