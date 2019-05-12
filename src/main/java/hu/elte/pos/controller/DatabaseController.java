@@ -5,6 +5,6 @@ public class DatabaseController {
     public int answer;
 
     public DatabaseController() {
-        answer = 42;
+        answer = 99;
     }
 }
