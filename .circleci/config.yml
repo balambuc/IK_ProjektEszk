@@ -21,11 +21,14 @@ workflows:
           requires:
             - run_tests
             - bundle_dependencies
-      - deploy:
+      - build_jar:
           requires:
             - run_tests
             - lint_code
             - analyze_coverage
+      - release_to_github:
+          requires:
+            -create_jar
           filters:
             branches:
               only: master
@@ -140,10 +143,9 @@ jobs:
       - codecov/upload:
           file: ~/coverage-results/jacocoTestReport.xml
 
-  deploy:
+  build_jar:
     docker:
       - image: circleci/openjdk:11-jdk
-      - image: cibuilds/github:0.10
 
     working_directory: ~/repo
 
@@ -162,9 +164,23 @@ jobs:
             find . -type f -regex ".*/build/libs/.*jar" -exec cp {} ~/jar-file/ \;
       - store_artifacts:
           path: ~/jar-file/
-      - run:
-          name: "Publish Release on GitHub"
-          command: |
-            VERSION=$(gradle properties -q | grep "version:" | awk '{print $2}' | tr -d '[:space:]')
-            ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1}
-            -delete ${VERSION} ~/jar-file/
+      - persist_to_workspace:
+          root: ~
+          paths:
+            - jar-file/
+
+    build_jar:
+      docker:
+        - image: cibuilds/github:0.12
+
+      working_directory: ~/repo
+
+      steps:
+        - attach_workspace:
+            at: ~
+        - run:
+            name: "Publish Release on GitHub"
+            command: |
+              VERSION=$(gradle properties -q | grep "version:" | awk '{print $2}' | tr -d '[:space:]')
+              ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1}
+              -delete ${VERSION} ~/jar-file/
