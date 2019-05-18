@@ -26,6 +26,9 @@ workflows:
             - run_tests
             - lint_code
             - analyze_coverage
+          filters:
+            branches:
+              only: master
       - release_to_github:
           requires:
             - build_jar
@@ -182,4 +185,4 @@ jobs:
           name: "Publish Release on GitHub"
           command: |
             VERSION=$(find ~/repo/build/libs/ -name '*.jar' | cut -d  '-' -f 2)
-            echo 'ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} ${VERSION} ~/repo/build/libs/'
+            ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} ${VERSION} ~/repo/build/libs/
