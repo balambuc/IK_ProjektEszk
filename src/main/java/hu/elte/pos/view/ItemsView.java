@@ -6,7 +6,7 @@ import java.awt.*;
 class ItemsView extends JFrame {
     ItemsView() {
         JFrame frame = new JFrame("LoginView");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
