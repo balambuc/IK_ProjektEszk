@@ -5,8 +5,8 @@ import java.awt.*;
 
 public class LoginView extends JFrame {
     public LoginView() {
-        JFrame frame = new JFrame("LoginView");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        final JFrame frame = new JFrame("LoginView");
 
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
