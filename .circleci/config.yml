@@ -26,6 +26,9 @@ workflows:
             - run_tests
             - lint_code
             - analyze_coverage
+          filters:
+            branches:
+              only: master
       - release_to_github:
           requires:
             - build_jar
