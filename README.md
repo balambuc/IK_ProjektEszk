@@ -4,4 +4,4 @@
 
 A cím mindent elárul :)
 
-Letölthető JAR file hamarosan.
+Letölthető JAR file a releases menü alatt. Link: [Releases](https://github.com/balambuc/IK_ProjektEszk/releases)
